@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="sq">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0E5E5A">
+  <title>HealthMate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230E5E5A'/%3E%3Cpath d='M16 24.5s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 16 11.8a4.2 4.2 0 0 1 7.5 2.7c0 5.4-7.5 10-7.5 10z' fill='%23fff'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- Ikonat (SVG) që përdoren në gjithë faqen -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3M7 15h10"/></symbol>
+    <symbol id="i-pill" viewBox="0 0 24 24"><rect x="2.5" y="8" width="19" height="8" rx="4" transform="rotate(-45 12 12)"/><path d="M8.5 8.5l7 7"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1h-2M6 14h12v7H6z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2.5-6.5z"/></symbol>
+    <symbol id="i-paste" viewBox="0 0 24 24"><path d="M9 4h6v3H9zM7 5H5v16h14V5h-2M8 12h8M8 16h5"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9h6v6H9z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2zM12 10v5M12 18v.5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-sunrise" viewBox="0 0 24 24"><path d="M4 18h16M7 18a5 5 0 0 1 10 0M12 4v4M5.6 9.6l1.4 1.4M18.4 9.6L17 11M2 18h1M21 18h1"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-sunset" viewBox="0 0 24 24"><path d="M4 18h16M7 18a5 5 0 0 1 10 0M12 9V4M9.5 6.5L12 9l2.5-2.5M2 18h1M21 18h1M4 21h16"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M12 9v6M9 12h6"/></symbol>
+    <symbol id="i-text" viewBox="0 0 24 24"><path d="M3 19l5-14 5 14M4.8 14h6.4M15 19l3.5-9 3.5 9M16.2 16h4.6"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Kalo te përmbajtja</a>
+
+<!-- ===================== SHIRITI I SIPËRM ===================== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#kreu" aria-label="HealthMate - faqja kryesore">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span>
+      <span class="brand-text"><span class="brand-name">HealthMate</span><span class="brand-tag">Kartela juaj e shëndetit</span></span>
+    </a>
+
+    <nav class="topnav" aria-label="Menyja kryesore">
+      <a href="#kreu" data-page="kreu">Kreu</a>
+      <a href="#analizat" data-page="analizat">Analizat</a>
+      <a href="#terapia" data-page="terapia">Terapia</a>
+      <a href="#simptomat" data-page="simptomat">Si ndihem</a>
+      <a href="#asistenti" data-page="asistenti">Asistenti</a>
+      <a href="#bota" data-page="bota">Shëndeti në botë</a>
+    </nav>
+
+    <div class="topbar-tools">
+      <div class="textsize textsize-wide" role="group" aria-label="Madhësia e shkrimit">
+        <button data-size="m" aria-label="Shkrim normal">A</button>
+        <button data-size="l" aria-label="Shkrim i madh">A</button>
+        <button data-size="xl" aria-label="Shkrim shumë i madh">A</button>
+      </div>
+      <button class="tool-btn textsize-cycle" id="btn-size-cycle" aria-label="Ndrysho madhësinë e shkrimit">
+        <svg class="icon"><use href="#i-text"/></svg>
+      </button>
+      <a class="btn-sos" href="tel:112" aria-label="Thirr urgjencën 112">
+        <svg class="icon"><use href="#i-phone"/></svg><span>112</span>
+      </a>
+      <a class="avatar-btn" href="#profili" data-page="profili" aria-label="Profili im">
+        <span class="avatar" id="header-avatar"><svg class="icon"><use href="#i-user"/></svg></span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- ===================== KREU ===================== -->
+  <section class="page" id="page-kreu">
+
+    <div class="hero">
+      <svg class="hero-ecg" viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 70h170l14-28 18 62 20-90 16 56h60l10-18 12 18h280"/>
+      </svg>
+      <p class="hero-date" id="today-date"></p>
+      <h1 id="greeting">Mirë se vini</h1>
+      <p class="hero-sub" id="hero-sub">Gjithë shëndeti juaj, në një vend.</p>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="#analizat" data-open="lab-photo"><svg class="icon"><use href="#i-camera"/></svg>Dërgo foto të analizave</a>
+        <a class="btn btn-ghost-light" href="#asistenti"><svg class="icon"><use href="#i-chat"/></svg>Pyet asistentin</a>
+      </div>
+    </div>
+
+    <div class="home-grid">
+      <div class="home-main">
+        <article class="card">
+          <div class="card-head">
+            <h2><span class="h-icon"><svg class="icon"><use href="#i-pill"/></svg></span>Barnat e sotme</h2>
+            <span class="muted small" id="dose-progress"></span>
+          </div>
+          <div id="home-doses"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h2><span class="h-icon"><svg class="icon"><use href="#i-flask"/></svg></span>Analizat që duan vëmendje</h2>
+          </div>
+          <div id="home-labs"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h2><span class="h-icon"><svg class="icon"><use href="#i-pulse"/></svg></span>Si jeni ndier</h2>
+            <a class="link" href="#simptomat">Shëno</a>
+          </div>
+          <div id="home-symptoms"></div>
+        </article>
+      </div>
+
+      <aside class="home-side">
+        <article class="card patient" id="home-card" aria-label="Kartela ime"></article>
+
+        <nav class="card menu" aria-label="Më shumë">
+          <h2 class="menu-title">Çfarë dëshironi të bëni?</h2>
+          <a class="menu-row" href="#simptomat"><span class="menu-icon"><svg class="icon"><use href="#i-pulse"/></svg></span>
+            <span><strong>Shëno si ndihem</strong><small>Një dhimbje ose shqetësim i ri</small></span><svg class="icon chev"><use href="#i-chevron"/></svg></a>
+          <a class="menu-row" href="#terapia" data-open="therapy-form"><span class="menu-icon"><svg class="icon"><use href="#i-pill"/></svg></span>
+            <span><strong>Shto një bar</strong><small>Terapi e re nga mjeku</small></span><svg class="icon chev"><use href="#i-chevron"/></svg></a>
+          <button class="menu-row" id="btn-print" type="button"><span class="menu-icon"><svg class="icon"><use href="#i-print"/></svg></span>
+            <span><strong>Përmbledhje për mjekun</strong><small>Printoni terapinë dhe analizat</small></span><svg class="icon chev"><use href="#i-chevron"/></svg></button>
+          <a class="menu-row" href="#bota"><span class="menu-icon"><svg class="icon"><use href="#i-globe"/></svg></span>
+            <span><strong>Shëndeti në botë</strong><small>Të dhëna dhe lajme nga OBSH</small></span><svg class="icon chev"><use href="#i-chevron"/></svg></a>
+          <a class="menu-row" href="#profili"><span class="menu-icon"><svg class="icon"><use href="#i-user"/></svg></span>
+            <span><strong>Profili im</strong><small>Alergji, mjeku, kontaktet</small></span><svg class="icon chev"><use href="#i-chevron"/></svg></a>
+        </nav>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== ANALIZAT ===================== -->
+  <section class="page" id="page-analizat" hidden>
+    <header class="page-head">
+      <span class="page-icon"><svg class="icon"><use href="#i-flask"/></svg></span>
+      <div>
+        <h1>Analizat e mia</h1>
+        <p class="lead">Dërgoni foton e fletës, dhe ne i lexojmë vlerat dhe ju tregojmë çfarë do të thonë.</p>
+      </div>
+    </header>
+
+    <button class="photo-cta" data-toggle="lab-photo" type="button">
+      <span class="photo-cta-icon"><svg class="icon"><use href="#i-camera"/></svg></span>
+      <span><strong>Dërgo foto të fletës së analizave</strong><small>Lexohet automatikisht dhe merrni një raport</small></span>
+      <svg class="icon chev"><use href="#i-chevron"/></svg>
+    </button>
+
+    <div class="actions">
+      <button class="btn btn-soft" data-toggle="lab-form"><svg class="icon"><use href="#i-plus"/></svg>Shto me dorë</button>
+      <button class="btn btn-soft" data-toggle="lab-paste"><svg class="icon"><use href="#i-paste"/></svg>Ngjit tekstin</button>
+      <button class="btn btn-soft" id="btn-explain-labs"><svg class="icon"><use href="#i-chat"/></svg>Më shpjego analizat</button>
+    </div>
+
+    <!-- Foto e fletës së analizave -->
+    <div class="card panel" id="lab-photo" hidden>
+      <h2>Foto e fletës së analizave</h2>
+
+      <div id="photo-step-pick">
+        <div class="photo-pick">
+          <label class="btn btn-primary btn-big photo-camera">
+            <svg class="icon"><use href="#i-camera"/></svg>Bëj foto me kamerë
+            <input id="photo-camera" type="file" accept="image/*" capture="environment" class="sr-only">
+          </label>
+          <label class="dropzone" for="photo-input">
+            <svg class="icon"><use href="#i-image"/></svg>
+            <span class="dropzone-title">Zgjidh një foto</span>
+            <span class="muted small">nga telefoni ose kompjuteri, ose tërhiqeni këtu</span>
+            <input id="photo-input" type="file" accept="image/*" class="sr-only">
+          </label>
+        </div>
+        <p class="hint-row"><svg class="icon"><use href="#i-check"/></svg>Fotografoni fletën drejt dhe me dritë të mirë, që të duken të gjithë numrat.</p>
+      </div>
+
+      <div id="photo-step-preview" hidden>
+        <img id="photo-preview" class="photo-preview" alt="Fotoja e fletës së analizave">
+        <div class="form-actions">
+          <button class="btn btn-primary btn-big" id="btn-read-photo"><svg class="icon"><use href="#i-doc"/></svg>Lexo fletën</button>
+          <button class="btn btn-ghost" type="button" id="btn-change-photo">Zgjidh një foto tjetër</button>
+        </div>
+      </div>
+
+      <div id="photo-step-busy" class="busy" hidden><span class="spinner" aria-hidden="true"></span><span id="photo-busy-text"></span></div>
+
+      <div id="photo-step-review" hidden></div>
+    </div>
+
+    <form class="card panel" id="lab-form" hidden>
+      <h2>Shto një analizë</h2>
+      <div class="field">
+        <label for="lab-test">Cila analizë?</label>
+        <select id="lab-test" required></select>
+      </div>
+      <div class="field" id="lab-custom-name-wrap" hidden>
+        <label for="lab-custom-name">Emri i analizës</label>
+        <input id="lab-custom-name" type="text" placeholder="p.sh. Kalciumi">
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="lab-value">Vlera</label>
+          <input id="lab-value" type="number" step="any" inputmode="decimal" required>
+        </div>
+        <div class="field">
+          <label for="lab-unit">Njësia</label>
+          <input id="lab-unit" type="text">
+        </div>
+        <div class="field">
+          <label for="lab-date">Data e analizës</label>
+          <input id="lab-date" type="date" required>
+        </div>
+      </div>
+      <p class="hint" id="lab-range-hint"></p>
+      <details class="more">
+        <summary>Fleta ka kufij të tjerë normalë?</summary>
+        <div class="row">
+          <div class="field"><label for="lab-low">Kufiri i poshtëm</label><input id="lab-low" type="number" step="any" inputmode="decimal"></div>
+          <div class="field"><label for="lab-high">Kufiri i sipërm</label><input id="lab-high" type="number" step="any" inputmode="decimal"></div>
+        </div>
+      </details>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Ruaje</button>
+        <button class="btn btn-ghost" type="button" data-toggle="lab-form">Anulo</button>
+      </div>
+    </form>
+
+    <div class="card panel" id="lab-paste" hidden>
+      <h2>Ngjit tekstin e fletës</h2>
+      <p class="muted">Kopjoni tekstin nga fleta e laboratorit (p.sh. nga PDF ose email) dhe ngjiteni këtu.</p>
+      <div class="field narrow">
+        <label for="paste-date">Data e analizave</label>
+        <input id="paste-date" type="date">
+      </div>
+      <textarea id="paste-text" rows="6" placeholder="Glukoza   105 mg/dL&#10;Kolesteroli total   215&#10;HbA1c   5.9 %"></textarea>
+      <div class="form-actions">
+        <button class="btn btn-primary" id="btn-parse">Gjej vlerat</button>
+        <button class="btn btn-ghost" type="button" data-toggle="lab-paste">Anulo</button>
+      </div>
+      <div id="paste-preview"></div>
+    </div>
+
+    <div id="lab-report-view" class="card report" hidden></div>
+    <div id="lab-explain" class="card report" hidden></div>
+
+    <h2 class="section-title">Rezultatet</h2>
+    <div id="lab-list"></div>
+
+    <h2 class="section-title">Raportet e mia</h2>
+    <div id="report-list"></div>
+  </section>
+
+  <!-- ===================== TERAPIA ===================== -->
+  <section class="page" id="page-terapia" hidden>
+    <header class="page-head">
+      <span class="page-icon"><svg class="icon"><use href="#i-pill"/></svg></span>
+      <div>
+        <h1>Terapia ime</h1>
+        <p class="lead">Barnat që merrni tani dhe ato që keni marrë më parë.</p>
+      </div>
+    </header>
+
+    <div class="actions">
+      <button class="btn btn-primary" data-toggle="therapy-form"><svg class="icon"><use href="#i-plus"/></svg>Shto një bar</button>
+    </div>
+
+    <form class="card panel" id="therapy-form" hidden>
+      <h2>Bar i ri</h2>
+      <div class="row">
+        <div class="field grow">
+          <label for="th-name">Emri i barit</label>
+          <input id="th-name" type="text" required placeholder="p.sh. Metformin">
+        </div>
+        <div class="field">
+          <label for="th-dose">Doza</label>
+          <input id="th-dose" type="text" placeholder="p.sh. 500 mg">
+        </div>
+      </div>
+      <fieldset class="field">
+        <legend>Kur e merrni?</legend>
+        <div class="choices choices-4">
+          <label class="choice"><input type="checkbox" name="th-times" value="morning"><span><svg class="icon"><use href="#i-sunrise"/></svg>Mëngjes</span></label>
+          <label class="choice"><input type="checkbox" name="th-times" value="noon"><span><svg class="icon"><use href="#i-sun"/></svg>Mesditë</span></label>
+          <label class="choice"><input type="checkbox" name="th-times" value="evening"><span><svg class="icon"><use href="#i-sunset"/></svg>Mbrëmje</span></label>
+          <label class="choice"><input type="checkbox" name="th-times" value="night"><span><svg class="icon"><use href="#i-moon"/></svg>Para gjumit</span></label>
+        </div>
+      </fieldset>
+      <div class="row">
+        <div class="field grow">
+          <label for="th-reason">Për çfarë e merrni?</label>
+          <input id="th-reason" type="text" placeholder="p.sh. Sheqeri">
+        </div>
+        <div class="field">
+          <label for="th-start">Që nga data</label>
+          <input id="th-start" type="date">
+        </div>
+      </div>
+      <div class="field">
+        <label for="th-notes">Shënime (opsionale)</label>
+        <input id="th-notes" type="text" placeholder="p.sh. Pas ngrënies">
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Ruaje</button>
+        <button class="btn btn-ghost" type="button" data-toggle="therapy-form">Anulo</button>
+      </div>
+    </form>
+
+    <h2 class="section-title">Barnat që merrni tani</h2>
+    <div id="therapy-active"></div>
+
+    <h2 class="section-title">Historiku i terapisë</h2>
+    <div id="therapy-past"></div>
+  </section>
+
+  <!-- ===================== SIMPTOMAT ===================== -->
+  <section class="page" id="page-simptomat" hidden>
+    <header class="page-head">
+      <span class="page-icon"><svg class="icon"><use href="#i-pulse"/></svg></span>
+      <div>
+        <h1>Si ndiheni?</h1>
+        <p class="lead">Shënoni çdo shqetësim të ri. Kështu ju dhe mjeku shihni si ndryshon gjendja me kohë.</p>
+      </div>
+    </header>
+
+    <form class="card panel" id="symptom-form">
+      <div class="field">
+        <label for="sy-desc">Çfarë ndjeni?</label>
+        <div class="chips" id="sy-chips"></div>
+        <textarea id="sy-desc" rows="2" required placeholder="Përshkruani me fjalët tuaja"></textarea>
+      </div>
+      <fieldset class="field">
+        <legend>Sa e fortë është? <span class="muted" id="sy-sev-label"></span></legend>
+        <div class="severity" id="sy-severity"></div>
+        <div class="severity-scale"><span>E lehtë</span><span>Shumë e fortë</span></div>
+      </fieldset>
+      <div class="field narrow">
+        <label for="sy-date">Kur filloi?</label>
+        <input id="sy-date" type="date">
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary btn-big" type="submit">Ruaje</button>
+      </div>
+    </form>
+
+    <div id="symptom-after" class="note" hidden></div>
+
+    <h2 class="section-title">Ditari i simptomave</h2>
+    <div id="symptom-list"></div>
+  </section>
+
+  <!-- ===================== ASISTENTI ===================== -->
+  <section class="page page-chat" id="page-asistenti" hidden>
+    <header class="page-head page-head-row">
+      <span class="page-icon"><svg class="icon"><use href="#i-chat"/></svg></span>
+      <div class="grow">
+        <h1>Asistenti juaj</h1>
+        <p class="lead">Pyesni për analizat, barnat ose çdo shqetësim. Asistenti i njeh të dhënat tuaja.</p>
+      </div>
+      <button class="btn btn-ghost btn-small" id="btn-clear-chat"><svg class="icon"><use href="#i-trash"/></svg>Fshi bisedën</button>
+    </header>
+
+    <div id="chat-emergency" class="emergency" hidden role="alert">
+      <svg class="icon"><use href="#i-alert"/></svg>
+      <div><strong>Kjo mund të jetë urgjente.</strong> Telefononi menjëherë <a href="tel:112">112</a>.</div>
+    </div>
+
+    <div class="chat" id="chat-log" aria-live="polite"></div>
+
+    <div class="suggest" id="chat-suggest">
+      <button class="chip">A janë analizat e mia në rregull?</button>
+      <button class="chip">A mund t'i marr barnat e mia bashkë?</button>
+      <button class="chip">Çfarë duhet të ha për sheqerin?</button>
+      <button class="chip">Çfarë ta pyes mjekun në vizitën e radhës?</button>
+    </div>
+
+    <form class="composer" id="chat-form">
+      <label for="chat-input" class="sr-only">Shkruani pyetjen tuaj</label>
+      <textarea id="chat-input" rows="1" placeholder="Shkruani pyetjen tuaj..." required></textarea>
+      <button class="btn btn-primary" type="submit" aria-label="Dërgo"><svg class="icon"><use href="#i-send"/></svg><span>Dërgo</span></button>
+    </form>
+    <p class="disclaimer">Asistenti jep informacion të përgjithshëm dhe nuk e zëvendëson mjekun.</p>
+  </section>
+
+  <!-- ===================== OBSH ===================== -->
+  <section class="page" id="page-bota" hidden>
+    <header class="page-head">
+      <span class="page-icon"><svg class="icon"><use href="#i-globe"/></svg></span>
+      <div>
+        <h1>Shëndeti në botë</h1>
+        <p class="lead">Të dhëna zyrtare nga Organizata Botërore e Shëndetësisë (OBSH).</p>
+      </div>
+    </header>
+
+    <div class="field narrow">
+      <label for="who-country">Shteti</label>
+      <select id="who-country"></select>
+    </div>
+
+    <div id="who-indicators" class="stats"></div>
+    <p class="muted small">Burimi: WHO Global Health Observatory. Kosova nuk paraqitet veçmas në të dhënat e OBSH-së.</p>
+
+    <div class="grid-2">
+      <article class="card">
+        <h2>Lajmet e fundit të OBSH-së</h2>
+        <p class="muted small">Lajmet janë në gjuhën angleze.</p>
+        <ul class="news" id="who-news"></ul>
+      </article>
+      <article class="card">
+        <h2>Njoftime për sëmundje</h2>
+        <p class="muted small">Shpërthime sëmundjesh ngjitëse në botë.</p>
+        <ul class="news" id="who-outbreaks"></ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===================== PROFILI ===================== -->
+  <section class="page" id="page-profili" hidden>
+    <header class="page-head">
+      <span class="page-icon"><svg class="icon"><use href="#i-user"/></svg></span>
+      <div>
+        <h1>Profili im</h1>
+        <p class="lead">Këto të dhëna i ndihmojnë asistentit t'ju japë këshilla më të sakta.</p>
+      </div>
+    </header>
+
+    <article class="card panel">
+      <h2>Madhësia e shkrimit</h2>
+      <div class="textsize textsize-big" role="group" aria-label="Madhësia e shkrimit">
+        <button data-size="m"><span style="font-size:18px">A</span>Normal</button>
+        <button data-size="l"><span style="font-size:22px">A</span>I madh</button>
+        <button data-size="xl"><span style="font-size:27px">A</span>Shumë i madh</button>
+      </div>
+    </article>
+
+    <form class="card panel" id="profile-form">
+      <h2>Të dhënat personale</h2>
+      <div class="row">
+        <div class="field grow"><label for="pf-name">Emri dhe mbiemri</label><input id="pf-name" type="text" autocomplete="name"></div>
+        <div class="field"><label for="pf-birth">Viti i lindjes</label><input id="pf-birth" type="number" inputmode="numeric" min="1900" max="2026"></div>
+      </div>
+      <fieldset class="field">
+        <legend>Gjinia</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="pf-sex" value="F"><span>Femër</span></label>
+          <label class="choice"><input type="radio" name="pf-sex" value="M"><span>Mashkull</span></label>
+        </div>
+      </fieldset>
+      <div class="row">
+        <div class="field"><label for="pf-height">Gjatësia (cm)</label><input id="pf-height" type="number" step="any" inputmode="decimal"></div>
+        <div class="field"><label for="pf-weight">Pesha (kg)</label><input id="pf-weight" type="number" step="any" inputmode="decimal"></div>
+        <div class="field grow"><label for="pf-country">Shteti (për të dhënat e OBSH-së)</label><select id="pf-country"></select></div>
+      </div>
+
+      <h2>Shëndeti</h2>
+      <div class="field"><label for="pf-allergies">Alergjitë</label><input id="pf-allergies" type="text" placeholder="p.sh. Penicilina"></div>
+      <div class="field"><label for="pf-conditions">Sëmundje kronike</label><input id="pf-conditions" type="text" placeholder="p.sh. Diabet tip 2, tension i lartë"></div>
+
+      <h2>Kontaktet</h2>
+      <div class="row">
+        <div class="field grow"><label for="pf-doc">Mjeku im</label><input id="pf-doc" type="text"></div>
+        <div class="field"><label for="pf-docphone">Telefoni i mjekut</label><input id="pf-docphone" type="tel" inputmode="tel"></div>
+      </div>
+      <div class="row">
+        <div class="field grow"><label for="pf-em">Personi për urgjencë</label><input id="pf-em" type="text" placeholder="p.sh. Vajza, Arta"></div>
+        <div class="field"><label for="pf-emphone">Telefoni</label><input id="pf-emphone" type="tel" inputmode="tel"></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-primary btn-big" type="submit">Ruaj ndryshimet</button></div>
+    </form>
+
+    <article class="card card-quiet">
+      <h2><span class="h-icon"><svg class="icon"><use href="#i-shield"/></svg></span>Privatësia</h2>
+      <p>Të gjitha të dhënat ruhen vetëm në këtë kompjuter. Kur bëni një pyetje, asistentit i dërgohet vetëm përmbledhja që i duhet për t'ju përgjigjur. Kur dërgoni foto të fletës së analizave, fotoja dërgohet te shërbimi që e lexon.</p>
+      <p class="muted small" id="ai-status"></p>
+    </article>
+  </section>
+
+</main>
+
+<!-- ===================== SHIRITI POSHTË (celular) ===================== -->
+<nav class="tabbar" aria-label="Menyja kryesore">
+  <a href="#kreu" data-page="kreu"><svg class="icon"><use href="#i-home"/></svg><span>Kreu</span></a>
+  <a href="#analizat" data-page="analizat"><svg class="icon"><use href="#i-flask"/></svg><span>Analizat</span></a>
+  <a href="#terapia" data-page="terapia"><svg class="icon"><use href="#i-pill"/></svg><span>Barnat</span></a>
+  <a href="#simptomat" data-page="simptomat"><svg class="icon"><use href="#i-pulse"/></svg><span>Si ndihem</span></a>
+  <a href="#asistenti" data-page="asistenti"><svg class="icon"><use href="#i-chat"/></svg><span>Asistenti</span></a>
+</nav>
+
+<!-- Faqja e printimit për mjekun (shfaqet vetëm kur printohet) -->
+<div id="print-view" aria-hidden="true"></div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="tooltip" class="tooltip" hidden></div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

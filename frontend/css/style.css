@@ -1,0 +1,697 @@
+/* ==========================================================================
+   HealthMate - stili
+   Ndjesia: një kartelë mjekësore e kujdesshme. Ngjyrë "teal" klinike,
+   letër e bardhë, tituj si në letrat e një klinike, shkrim i madh.
+   Parimet: kontrast i lartë, butona të mëdhenj, pak gjëra njëherësh.
+   ========================================================================== */
+
+:root {
+  --bg: #F1F5F4;
+  --surface: #FFFFFF;
+  --surface-2: #F6F9F8;
+  --tint: #E6F1EF;
+  --ink: #0F2A2C;
+  --ink-2: #3A5255;
+  --muted: #587073;
+  --line: #DCE6E4;
+  --line-strong: #B8C9C6;
+
+  --primary: #0E6B66;
+  --primary-hover: #0A5652;
+  --primary-deep: #0B4D4A;
+  --primary-soft: #DDEFEC;
+  --on-primary: #FFFFFF;
+
+  --ok: #1D7349;     --ok-soft: #E1F2E8;
+  --high: #B42318;   --high-soft: #FCE9E7;
+  --low: #8F5A00;    --low-soft: #FBF0D9;
+  --danger: #C0262D;
+
+  --chart-line: #0E6B66;
+  --chart-band: #1D7349;
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 1px 2px rgba(15, 42, 44, .05), 0 4px 16px rgba(15, 42, 44, .05);
+  --shadow-lift: 0 2px 4px rgba(15, 42, 44, .06), 0 10px 28px rgba(15, 42, 44, .08);
+
+  --font-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-head: "Source Serif 4", Georgia, "Times New Roman", serif;
+
+  --topbar-h: 4.25rem;
+  --tabbar-h: 4.6rem;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+
+  font-size: 18px;
+}
+html[data-size="l"]  { font-size: 20px; }
+html[data-size="xl"] { font-size: 23px; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--topbar-h) + 1rem); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3 { font-family: var(--font-head); font-weight: 600; line-height: 1.2; margin: 0 0 .5rem; color: var(--ink); letter-spacing: -.005em; }
+h1 { font-size: 2.1rem; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1.12rem; }
+p  { margin: 0 0 .75rem; }
+a  { color: var(--primary); }
+.muted { color: var(--muted); }
+.small { font-size: .875rem; }
+.lead  { font-size: 1.08rem; color: var(--ink-2); margin: 0; max-width: 44rem; }
+.grow  { flex: 1 1 auto; min-width: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: -999px; top: .5rem; z-index: 100; background: var(--ink); color: #fff; padding: .6rem 1rem; border-radius: 8px; }
+.skip:focus { left: .5rem; }
+
+.icon {
+  width: 1.3em; height: 1.3em; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+
+:focus-visible { outline: 3px solid #1F6FB2; outline-offset: 2px; border-radius: 6px; }
+
+/* ==========================================================================
+   Shiriti i sipërm
+   ========================================================================== */
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(255, 255, 255, .94);
+  backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  max-width: 72rem; margin: 0 auto; height: var(--topbar-h);
+  display: flex; align-items: center; gap: 1.5rem; padding: 0 1.5rem;
+}
+.brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; color: var(--ink); flex: none; }
+.brand-mark {
+  width: 2.4rem; height: 2.4rem; border-radius: 12px; background: var(--primary);
+  display: grid; place-items: center; box-shadow: inset 0 -2px 0 rgba(0,0,0,.12);
+}
+.brand-mark svg { width: 1.4rem; height: 1.4rem; fill: #fff; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-name { font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; color: var(--primary-deep); }
+.brand-tag { font-size: .72rem; color: var(--muted); letter-spacing: .02em; }
+
+.topnav { display: flex; gap: .15rem; margin: 0 auto; }
+.topnav a {
+  padding: .5rem .85rem; border-radius: 999px; text-decoration: none;
+  color: var(--ink-2); font-weight: 700; font-size: .95rem; white-space: nowrap;
+}
+.topnav a:hover { background: var(--surface-2); color: var(--ink); }
+.topnav a.active { background: var(--primary-soft); color: var(--primary-deep); }
+
+.topbar-tools { display: flex; align-items: center; gap: .6rem; flex: none; margin-left: auto; }
+.textsize { display: flex; align-items: center; gap: .2rem; }
+.textsize-wide button {
+  width: 2.3rem; height: 2.3rem; border: 1px solid var(--line-strong); background: var(--surface);
+  border-radius: 10px; cursor: pointer; color: var(--ink); font-family: var(--font-head); font-weight: 700; padding: 0;
+}
+.textsize-wide button:nth-child(1) { font-size: 14px; }
+.textsize-wide button:nth-child(2) { font-size: 18px; }
+.textsize-wide button:nth-child(3) { font-size: 22px; }
+.textsize button[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+.tool-btn {
+  width: 2.75rem; height: 2.75rem; border-radius: 12px; border: 1px solid var(--line-strong);
+  background: var(--surface); color: var(--ink); display: grid; place-items: center; cursor: pointer; padding: 0;
+}
+.textsize-cycle { display: none; }
+
+.btn-sos {
+  display: inline-flex; align-items: center; gap: .4rem; height: 2.75rem; padding: 0 1rem;
+  border-radius: 999px; background: var(--danger); color: #fff; text-decoration: none; font-weight: 700;
+}
+.btn-sos:hover { background: #A31F25; }
+.avatar-btn { text-decoration: none; border-radius: 50%; }
+.avatar {
+  width: 2.75rem; height: 2.75rem; border-radius: 50%; display: grid; place-items: center;
+  background: var(--primary-soft); color: var(--primary-deep); font-weight: 700; font-family: var(--font-head); font-size: 1.05rem;
+  border: 2px solid transparent;
+}
+.avatar-btn.active .avatar { border-color: var(--primary); }
+
+/* ==========================================================================
+   Struktura
+   ========================================================================== */
+main { max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem 4rem; outline: none; }
+.page-head { display: flex; align-items: flex-start; gap: 1rem; margin: .5rem 0 1.75rem; }
+.page-head h1 { margin-bottom: .3rem; }
+.page-head-row { align-items: center; flex-wrap: wrap; }
+.page-icon {
+  width: 3.25rem; height: 3.25rem; border-radius: 16px; flex: none; margin-top: .2rem;
+  display: grid; place-items: center; background: var(--primary-soft); color: var(--primary-deep);
+}
+.page-icon .icon { width: 1.6rem; height: 1.6rem; }
+.section-title { margin: 2.25rem 0 .9rem; font-size: 1.35rem; }
+
+/* ---------- Kartat ---------- */
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.5rem; margin-bottom: 1.25rem; box-shadow: var(--shadow);
+}
+.card-quiet { background: var(--surface-2); box-shadow: none; }
+.card-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: .9rem; }
+.card-head h2 { margin: 0; display: flex; align-items: center; gap: .6rem; }
+h2 .h-icon {
+  width: 2.1rem; height: 2.1rem; border-radius: 10px; display: inline-grid; place-items: center; flex: none;
+  background: var(--tint); color: var(--primary);
+}
+h2 .h-icon .icon { width: 1.15rem; height: 1.15rem; }
+.card-quiet h2 { display: flex; align-items: center; gap: .6rem; }
+.panel { border-color: var(--primary-soft); box-shadow: var(--shadow-lift); }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.grid-2 > .card { margin-bottom: 0; }
+.empty { color: var(--muted); margin: 0; }
+
+.note {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  background: var(--tint); border: 1px solid var(--primary-soft); border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem; margin-bottom: 1.25rem;
+}
+.note p { margin: 0; flex: 1 1 18rem; }
+
+/* ==========================================================================
+   Kreu
+   ========================================================================== */
+.hero {
+  position: relative; overflow: hidden;
+  background: var(--primary-deep); color: #fff;
+  border-radius: 24px; padding: 2.25rem 2.25rem 2rem; margin-bottom: 1.5rem;
+}
+.hero::after {   /* kryq mjekësor i lehtë në cep */
+  content: ""; position: absolute; right: -2.5rem; top: -2.5rem; width: 11rem; height: 11rem; opacity: .07;
+  background:
+    linear-gradient(#fff, #fff) center / 34% 100% no-repeat,
+    linear-gradient(#fff, #fff) center / 100% 34% no-repeat;
+}
+.hero-ecg {
+  position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 5.5rem; opacity: .16;
+  fill: none; stroke: #9FE3D6; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round;
+}
+.hero > *:not(.hero-ecg) { position: relative; }
+.hero-date { color: #B9E2DA; margin: 0 0 .35rem; font-size: 1rem; }
+.hero h1 { color: #fff; font-size: 2.35rem; margin-bottom: .4rem; }
+.hero-sub { color: #E1F3EF; font-size: 1.1rem; margin: 0 0 1.4rem; max-width: 36rem; }
+.hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.home-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 1.25rem; align-items: start; }
+
+/* Kartela e pacientit */
+.patient { padding: 0; overflow: hidden; }
+.patient-label {
+  display: flex; align-items: center; gap: .45rem; font-size: .74rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--primary); padding: .7rem 1.5rem; background: var(--tint); border-bottom: 1px solid var(--primary-soft);
+}
+.patient-label .icon { width: 1rem; height: 1rem; }
+.patient-top { display: flex; align-items: center; gap: 1rem; padding: 1.3rem 1.5rem 1rem; }
+.patient-top .avatar { width: 3.6rem; height: 3.6rem; font-size: 1.5rem; background: var(--primary); color: #fff; flex: none; }
+.patient-name { font-family: var(--font-head); font-size: 1.3rem; font-weight: 700; line-height: 1.2; }
+.patient-meta { color: var(--muted); font-size: .95rem; }
+.patient dl { margin: 0; padding: 0 1.5rem .6rem; }
+.patient dl > div { padding: .75rem 0; border-top: 1px solid var(--line); }
+.patient dt { font-size: .78rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .2rem; }
+.patient dd { margin: 0; }
+.allergy { display: inline-flex; align-items: center; gap: .35rem; background: var(--high-soft); color: var(--high); font-weight: 700; padding: .15rem .7rem; border-radius: 999px; margin: 0 .3rem .3rem 0; }
+.allergy .icon { width: 1rem; height: 1rem; }
+.patient-call { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
+.call-btn {
+  display: inline-flex; align-items: center; gap: .35rem; padding: .4rem .85rem; border-radius: 999px;
+  background: var(--primary-soft); color: var(--primary-deep); font-weight: 700; text-decoration: none; font-size: .92rem; white-space: nowrap;
+}
+.call-btn .icon { width: 1.05rem; height: 1.05rem; }
+.patient-empty { padding: 0 1.5rem 1.5rem; }
+
+/* Menyja "Çfarë dëshironi të bëni?" */
+.menu { padding: .5rem; }
+.menu-title { font-size: 1.12rem; margin: .8rem 1rem .4rem; }
+.menu-row {
+  display: flex; align-items: center; gap: .9rem; width: 100%; text-align: left;
+  padding: .8rem 1rem; border-radius: var(--radius-sm); border: 0; background: none;
+  color: var(--ink); text-decoration: none; font: inherit; cursor: pointer;
+}
+.menu-row:hover { background: var(--surface-2); }
+.menu-row > span:nth-child(2) { flex: 1; display: flex; flex-direction: column; line-height: 1.3; }
+.menu-row small { color: var(--muted); font-size: .88rem; }
+.menu-icon { width: 2.6rem; height: 2.6rem; border-radius: 12px; display: grid; place-items: center; background: var(--tint); color: var(--primary); flex: none; }
+.menu-row .chev, .photo-cta .chev { color: var(--line-strong); width: 1.2rem; height: 1.2rem; }
+
+/* Barnat e sotme */
+.dose-slot { display: flex; align-items: center; gap: .5rem; font-size: .85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin: 1.1rem 0 .4rem; }
+.dose-slot:first-child { margin-top: 0; }
+.dose-slot .icon { width: 1.15rem; height: 1.15rem; color: var(--primary); }
+.dose {
+  display: flex; align-items: center; gap: .9rem; width: 100%; text-align: left;
+  padding: .8rem 1rem; margin: .3rem 0; min-height: 3.6rem;
+  font: inherit; background: var(--surface-2); border: 1.5px solid var(--line); border-radius: var(--radius-sm); cursor: pointer; color: var(--ink);
+}
+.dose:hover { border-color: var(--line-strong); }
+.dose .box { width: 1.8rem; height: 1.8rem; border: 2px solid var(--line-strong); border-radius: 50%; display: grid; place-items: center; flex: none; background: #fff; }
+.dose .box .icon { width: 1.1rem; height: 1.1rem; stroke-width: 3; color: #fff; visibility: hidden; }
+.dose[aria-pressed="true"] { background: var(--ok-soft); border-color: #9BD2B4; }
+.dose[aria-pressed="true"] .box { background: var(--ok); border-color: var(--ok); }
+.dose[aria-pressed="true"] .box .icon { visibility: visible; }
+.dose[aria-pressed="true"] .dose-name { text-decoration: line-through; text-decoration-thickness: 1px; color: var(--ink-2); }
+.dose .dose-state { margin-left: auto; color: var(--ok); font-weight: 700; font-size: .9rem; white-space: nowrap; }
+.progress { height: .45rem; background: var(--line); border-radius: 999px; overflow: hidden; margin: 0 0 1rem; }
+.progress > span { display: block; height: 100%; background: var(--ok); border-radius: 999px; transition: width .3s ease; }
+
+/* ==========================================================================
+   Butonat
+   ========================================================================== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 3rem; padding: .6rem 1.2rem;
+  border: 1.5px solid var(--line-strong); border-radius: 999px;
+  background: var(--surface); color: var(--ink);
+  font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; white-space: nowrap;
+}
+.btn:hover { border-color: var(--ink-2); }
+.btn:disabled { opacity: .55; cursor: wait; }
+.btn-primary { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+.btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+.btn-soft { background: var(--surface); border-color: var(--line); color: var(--primary-deep); }
+.btn-soft:hover { border-color: var(--primary); background: var(--tint); }
+.btn-ghost { background: transparent; border-color: transparent; color: var(--ink-2); }
+.btn-ghost:hover { background: var(--surface-2); border-color: transparent; }
+.btn-light { background: #fff; border-color: #fff; color: var(--primary-deep); }
+.btn-light:hover { background: #E8F5F2; border-color: #E8F5F2; }
+.btn-ghost-light { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.35); color: #fff; }
+.btn-ghost-light:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.6); }
+.btn-small { min-height: 2.6rem; padding: .35rem .95rem; font-size: .95rem; }
+.btn-big { min-height: 3.5rem; padding: .7rem 1.6rem; font-size: 1.05rem; }
+.btn-danger-text { color: var(--danger); }
+.actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.link { font-weight: 700; }
+
+.icon-btn {
+  border: 0; background: transparent; color: var(--muted); cursor: pointer; padding: .4rem; border-radius: 10px;
+  min-width: 2.75rem; min-height: 2.75rem; display: inline-grid; place-items: center;
+}
+.icon-btn:hover { background: var(--high-soft); color: var(--danger); }
+
+/* Butoni i madh "Dërgo foto" */
+.photo-cta {
+  display: flex; align-items: center; gap: 1rem; width: 100%; text-align: left; cursor: pointer;
+  padding: 1.15rem 1.35rem; margin-bottom: 1rem; border-radius: var(--radius);
+  background: var(--surface); border: 1.5px solid var(--primary-soft); box-shadow: var(--shadow);
+  font: inherit; color: var(--ink);
+}
+.photo-cta:hover { border-color: var(--primary); box-shadow: var(--shadow-lift); }
+.photo-cta > span:nth-child(2) { flex: 1; display: flex; flex-direction: column; }
+.photo-cta strong { font-size: 1.12rem; }
+.photo-cta small { color: var(--muted); font-size: .92rem; }
+.photo-cta-icon { width: 3.4rem; height: 3.4rem; border-radius: 16px; background: var(--primary); color: #fff; display: grid; place-items: center; flex: none; }
+.photo-cta-icon .icon { width: 1.7rem; height: 1.7rem; }
+
+/* ==========================================================================
+   Formularët
+   ========================================================================== */
+.panel h2 { margin-top: .25rem; }
+form h2:not(:first-child) { margin-top: 1.75rem; }
+.field { display: flex; flex-direction: column; gap: .35rem; margin: 0 0 1rem; border: 0; padding: 0; min-width: 0; flex: 1 1 10rem; }
+.field.grow { flex: 2 1 15rem; }
+.field.narrow { max-width: 20rem; }
+.row { display: flex; gap: 1rem; flex-wrap: wrap; }
+label, legend { font-weight: 700; color: var(--ink); }
+legend { margin-bottom: .5rem; padding: 0; }
+input, select, textarea {
+  width: 100%; font: inherit; font-size: max(1rem, 16px); color: var(--ink);
+  padding: .7rem .9rem; min-height: 3.1rem;
+  background: var(--surface); border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm);
+}
+input:focus, select:focus, textarea:focus { border-color: var(--primary); outline: 3px solid var(--primary-soft); outline-offset: 0; }
+textarea { resize: vertical; line-height: 1.45; }
+.hint { color: var(--muted); margin: -.25rem 0 1rem; }
+.form-actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .5rem; }
+details.more { margin-bottom: 1rem; }
+details.more summary { cursor: pointer; color: var(--primary); font-weight: 700; padding: .4rem 0; }
+details.more .row { margin-top: .75rem; }
+
+.choices { display: flex; gap: .6rem; flex-wrap: wrap; }
+.choice { position: relative; font-weight: 400; }
+.choice input { position: absolute; opacity: 0; width: 1px; height: 1px; min-height: 0; }
+.choice span {
+  display: inline-flex; align-items: center; gap: .55rem; min-height: 3.1rem; padding: .55rem 1.1rem;
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); cursor: pointer; background: var(--surface);
+}
+.choice span .icon { color: var(--primary); width: 1.2rem; height: 1.2rem; }
+.choice span::before {
+  content: ""; width: 1.2rem; height: 1.2rem; border: 2px solid var(--line-strong); border-radius: 5px; flex: none; background: #fff;
+}
+.choice input[type="radio"] + span::before { border-radius: 50%; }
+.choice input:checked + span { border-color: var(--primary); background: var(--tint); font-weight: 700; }
+.choice input:checked + span::before {
+  border-color: var(--primary); background: var(--primary)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/80% no-repeat;
+}
+.choice input:focus-visible + span { outline: 3px solid #1F6FB2; outline-offset: 2px; }
+
+.chips, .suggest { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .7rem; }
+.chip {
+  font: inherit; font-size: .95rem; padding: .5rem 1rem; min-height: 2.75rem;
+  border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface-2); color: var(--ink); cursor: pointer;
+}
+.chip:hover { border-color: var(--primary); color: var(--primary-deep); background: var(--tint); }
+
+.severity { display: grid; grid-template-columns: repeat(10, 1fr); gap: .35rem; }
+.severity button {
+  min-height: 3.1rem; font: inherit; font-weight: 700; cursor: pointer;
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink);
+}
+.severity button[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: #fff; }
+.severity-scale { display: flex; justify-content: space-between; color: var(--muted); font-size: .9rem; margin-top: .35rem; }
+
+.textsize-big { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
+.textsize-big button {
+  display: flex; flex-direction: column; align-items: center; gap: .2rem; padding: .8rem .5rem; min-height: 4.5rem;
+  border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink);
+  font: inherit; font-weight: 700; cursor: pointer;
+}
+.textsize-big button span { font-family: var(--font-head); line-height: 1; }
+
+/* ==========================================================================
+   Statusi i analizave
+   ========================================================================== */
+.badge {
+  display: inline-flex; align-items: center; gap: .3rem; white-space: nowrap;
+  padding: .25rem .75rem; border-radius: 999px; font-weight: 700; font-size: .88rem;
+}
+.badge .icon { width: 1.05em; height: 1.05em; stroke-width: 2.8; }
+.badge-normal  { background: var(--ok-soft);  color: var(--ok); }
+.badge-high    { background: var(--high-soft); color: var(--high); }
+.badge-low     { background: var(--low-soft);  color: var(--low); }
+.badge-unknown { background: var(--surface-2); color: var(--muted); }
+
+.lab-card { position: relative; padding: 1.35rem 1.5rem 1.2rem 1.75rem; overflow: hidden; }
+.lab-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--line); }
+.lab-card[data-status="normal"]::before { background: var(--ok); }
+.lab-card[data-status="high"]::before { background: var(--high); }
+.lab-card[data-status="low"]::before { background: #C98A12; }
+.lab-top { display: flex; justify-content: space-between; align-items: flex-start; gap: .75rem; }
+.lab-name { margin: 0; font-size: 1.12rem; }
+.lab-value { font-family: var(--font-head); font-size: 2.1rem; font-weight: 600; line-height: 1.1; margin-top: .4rem; }
+.lab-value small { font-family: var(--font-body); font-size: 1rem; color: var(--muted); font-weight: 400; margin-left: .3rem; }
+.lab-meta { color: var(--muted); margin: .3rem 0 0; }
+.lab-explain { color: var(--ink-2); margin: .8rem 0 0; }
+.lab-foot { display: flex; align-items: center; justify-content: space-between; gap: .5rem; flex-wrap: wrap; margin-top: .6rem; }
+
+.chart { width: 100%; height: auto; display: block; margin-top: .9rem; overflow: visible; }
+.chart .band { fill: var(--chart-band); opacity: .09; }
+.chart .band-edge { stroke: var(--chart-band); stroke-opacity: .35; stroke-dasharray: 4 4; stroke-width: 1; }
+.chart .line { fill: none; stroke: var(--chart-line); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .dot { fill: var(--chart-line); stroke: var(--surface); stroke-width: 2; }
+.chart .dot-last { r: 6; }
+.chart .axis { fill: var(--muted); font-size: 13px; font-family: var(--font-body); }
+.chart .val-label { fill: var(--ink); font-size: 14px; font-weight: 700; font-family: var(--font-body); }
+.chart .hit { fill: transparent; cursor: pointer; }
+.chart .hover-line { stroke: var(--line-strong); stroke-width: 1; }
+
+.tooltip {
+  position: fixed; z-index: 50; pointer-events: none;
+  background: var(--ink); color: #fff; padding: .45rem .7rem; border-radius: 10px;
+  font-size: .9rem; line-height: 1.35; box-shadow: 0 4px 14px rgba(0,0,0,.18); max-width: 16rem;
+}
+
+details.history { margin-top: .5rem; }
+details.history summary { cursor: pointer; color: var(--primary); font-weight: 700; padding: .3rem 0; }
+
+table.simple { width: 100%; border-collapse: collapse; margin-top: .5rem; }
+table.simple th, table.simple td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+table.simple th { font-size: .85rem; color: var(--muted); font-weight: 700; }
+table.simple td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.table-scroll { overflow-x: auto; }
+
+/* ---------- Lista të thjeshta ---------- */
+.list { list-style: none; margin: 0; padding: 0; }
+.list > li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; padding: .85rem 0; border-bottom: 1px solid var(--line); }
+.list > li:last-child { border-bottom: 0; padding-bottom: 0; }
+.list > li:first-child { padding-top: 0; }
+.list .title { font-weight: 700; }
+.list .sub { color: var(--muted); font-size: .95rem; }
+.list .li-main { flex: 1 1 0; min-width: 0; }
+.list .li-end { display: flex; align-items: center; gap: .25rem; }
+
+.therapy { display: flex; gap: 1rem; align-items: flex-start; }
+.therapy-icon { width: 3rem; height: 3rem; border-radius: 14px; background: var(--tint); color: var(--primary); display: grid; place-items: center; flex: none; }
+.therapy-body { flex: 1; min-width: 0; }
+.therapy h3 { margin: 0; font-size: 1.3rem; }
+.therapy .tags { display: flex; gap: .4rem; flex-wrap: wrap; margin: .6rem 0; }
+.tag { display: inline-flex; align-items: center; gap: .3rem; background: var(--surface-2); border: 1px solid var(--line); padding: .2rem .7rem; border-radius: 999px; font-size: .9rem; }
+.tag .icon { width: 1rem; height: 1rem; color: var(--primary); }
+.therapy-actions { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .9rem; align-items: center; }
+
+.sev-pill { display: inline-block; min-width: 3.4rem; text-align: center; padding: .2rem .6rem; border-radius: 999px; font-weight: 700; font-size: .9rem; background: var(--surface-2); border: 1px solid var(--line); }
+.sev-mid  { background: var(--low-soft); color: var(--low); border-color: transparent; }
+.sev-high { background: var(--high-soft); color: var(--high); border-color: transparent; }
+
+/* ==========================================================================
+   Foto e fletës së analizave
+   ========================================================================== */
+.photo-pick { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: stretch; }
+.photo-camera { cursor: pointer; flex-direction: column; border-radius: var(--radius); padding: 1.2rem 1.6rem; white-space: normal; text-align: center; }
+.photo-camera .icon { width: 2rem; height: 2rem; }
+.dropzone {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; text-align: center;
+  padding: 1.5rem 1.25rem; border: 2px dashed var(--line-strong); border-radius: var(--radius);
+  background: var(--surface-2); cursor: pointer; font-weight: 400;
+}
+.dropzone:hover, .dropzone.drag { border-color: var(--primary); background: var(--tint); }
+.dropzone .icon { width: 2.4rem; height: 2.4rem; color: var(--primary); stroke-width: 1.7; }
+.dropzone-title { font-weight: 700; font-size: 1.08rem; }
+.dropzone:has(input:focus-visible), .photo-camera:has(input:focus-visible) { outline: 3px solid #1F6FB2; outline-offset: 2px; }
+.hint-row { display: flex; gap: .5rem; align-items: flex-start; color: var(--muted); margin: 1rem 0 0; }
+.hint-row .icon { color: var(--ok); margin-top: .15rem; }
+.photo-preview {
+  display: block; max-width: 100%; max-height: 22rem; margin: 0 auto 1rem;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-2);
+}
+.busy { display: flex; align-items: center; gap: .9rem; padding: 1.25rem 0; font-size: 1.1rem; color: var(--ink-2); }
+.spinner {
+  width: 1.8rem; height: 1.8rem; border-radius: 50%; flex: none;
+  border: 3px solid var(--primary-soft); border-top-color: var(--primary); animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 3s; } }
+
+/* Lista e kontrollit të vlerave (kartela - punon mirë edhe në celular) */
+.review-meta { display: flex; gap: .5rem 1rem; flex-wrap: wrap; align-items: flex-end; margin: .5rem 0 1rem; }
+.review-meta .field { margin: 0; max-width: 16rem; }
+.review-list { display: flex; flex-direction: column; gap: .5rem; }
+.review-row {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "check name status" ". value value";
+  gap: .35rem .8rem; align-items: center;
+  padding: .8rem 1rem; border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: var(--surface);
+}
+.review-row.off { background: var(--surface-2); }
+.review-row.off > :not(.r-check) { opacity: .45; }
+.r-check { grid-area: check; display: flex; }
+.r-check input { width: 1.5rem; height: 1.5rem; min-height: 0; accent-color: var(--primary); margin: 0; }
+.r-name { grid-area: name; font-weight: 700; line-height: 1.3; }
+.r-name small { display: block; font-weight: 400; color: var(--muted); font-size: .85rem; }
+.r-status { grid-area: status; }
+.r-value { grid-area: value; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.r-value input { width: 7.5rem; min-height: 2.75rem; padding: .35rem .6rem; font-variant-numeric: tabular-nums; }
+.r-value .unit { color: var(--muted); }
+.r-value .range { color: var(--muted); font-size: .88rem; margin-left: auto; }
+
+/* Raportet */
+.report { line-height: 1.65; }
+.report h3 { font-family: var(--font-head); font-size: 1.18rem; margin: 1.3rem 0 .4rem; color: var(--primary-deep); }
+.report h3:first-of-type { margin-top: .9rem; }
+.report ul, .report ol { padding-left: 1.3rem; }
+.report li { margin-bottom: .3rem; }
+.report-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; padding-bottom: .9rem; border-bottom: 1px solid var(--line); }
+.report-head h2 { margin: 0; }
+.report-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+.report-item { padding: 0; }
+.report-item summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.35rem; }
+.report-item summary::-webkit-details-marker { display: none; }
+.report-item summary .title { font-weight: 700; }
+.report-item summary .chev { margin-left: auto; color: var(--primary); font-weight: 700; white-space: nowrap; }
+.report-item[open] summary .chev-open { display: none; }
+.report-item:not([open]) summary .chev-close { display: none; }
+.report-doc { width: 2.75rem; height: 2.75rem; border-radius: 12px; background: var(--tint); color: var(--primary); display: grid; place-items: center; flex: none; }
+.report-body { border-top: 1px solid var(--line); padding: .5rem 1.35rem 1.3rem; }
+.report-thumb { max-width: 12rem; max-height: 9rem; border: 1px solid var(--line); border-radius: var(--radius-sm); display: block; margin-top: .5rem; }
+
+/* ==========================================================================
+   Biseda
+   ========================================================================== */
+.chat { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1rem; }
+.msg { max-width: 85%; padding: .95rem 1.2rem; border-radius: 20px; line-height: 1.6; }
+.msg p:last-child, .msg ul:last-child, .msg ol:last-child { margin-bottom: 0; }
+.msg ul, .msg ol { margin: .25rem 0 .75rem; padding-left: 1.3rem; }
+.msg h3 { font-size: 1.05rem; margin: .8rem 0 .3rem; }
+.msg-user { align-self: flex-end; background: var(--primary); color: var(--on-primary); border-bottom-right-radius: 6px; }
+.msg-assistant { align-self: flex-start; background: var(--surface); border: 1px solid var(--line); border-bottom-left-radius: 6px; box-shadow: var(--shadow); }
+.msg-who { display: flex; align-items: center; gap: .45rem; font-size: .85rem; font-weight: 700; color: var(--primary); margin-bottom: .35rem; }
+.mini-mark { width: 1.45rem; height: 1.45rem; border-radius: 7px; background: var(--primary); display: grid; place-items: center; flex: none; }
+.mini-mark svg { width: .85rem; height: .85rem; fill: #fff; }
+.msg-user .msg-who { color: rgba(255,255,255,.85); }
+.msg-time { font-size: .8rem; color: var(--muted); margin-top: .4rem; }
+.msg-user .msg-time { color: rgba(255,255,255,.75); }
+.typing { color: var(--muted); font-style: italic; }
+.chat-empty { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem 1.5rem; box-shadow: var(--shadow); }
+.composer {
+  display: flex; gap: .6rem; align-items: flex-end; position: sticky; bottom: 1rem; z-index: 5;
+  background: var(--surface); padding: .45rem; border: 1.5px solid var(--line-strong); border-radius: 26px; box-shadow: var(--shadow-lift);
+}
+.composer textarea { flex: 1; border: 0; min-height: 3rem; max-height: 9rem; padding: .7rem .8rem; resize: none; font-size: max(1.05rem, 16px); border-radius: 20px; }
+.composer textarea:focus { outline: none; }
+.composer:focus-within { border-color: var(--primary); }
+.composer .btn { min-height: 3rem; }
+.disclaimer { color: var(--muted); font-size: .88rem; margin-top: .6rem; text-align: center; }
+.emergency {
+  display: flex; gap: .9rem; align-items: center; background: var(--high-soft); color: var(--high);
+  border: 2px solid var(--high); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-bottom: 1rem; font-size: 1.1rem;
+}
+.emergency .icon { width: 2rem; height: 2rem; }
+.emergency a { color: var(--high); font-weight: 700; }
+
+/* ==========================================================================
+   OBSH
+   ========================================================================== */
+.stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; margin: 1.25rem 0 .75rem; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem 1.35rem; box-shadow: var(--shadow); }
+.stat-title { font-weight: 700; margin: 0 0 .25rem; color: var(--ink-2); }
+.stat-value { font-family: var(--font-head); font-size: 2.2rem; font-weight: 600; line-height: 1.1; color: var(--primary-deep); }
+.stat-value small { font-family: var(--font-body); font-size: .95rem; color: var(--muted); font-weight: 400; margin-left: .25rem; }
+.stat-compare { color: var(--ink-2); font-size: .95rem; margin: .45rem 0 .3rem; }
+.stat-info { color: var(--muted); font-size: .88rem; margin: 0; }
+.stat.loading { color: var(--muted); min-height: 9rem; }
+.news { list-style: none; padding: 0; margin: 0; }
+.news li { padding: .75rem 0; border-bottom: 1px solid var(--line); }
+.news li:last-child { border-bottom: 0; }
+.news a { font-weight: 700; text-decoration: none; }
+.news a:hover { text-decoration: underline; }
+.news .date { display: block; color: var(--muted); font-size: .88rem; }
+
+/* ==========================================================================
+   Shiriti poshtë (vetëm celular/tablet) + toast
+   ========================================================================== */
+.tabbar { display: none; }
+
+#toast {
+  position: fixed; left: 50%; bottom: 2rem; transform: translateX(-50%) translateY(1rem);
+  background: var(--ink); color: #fff; padding: .9rem 1.4rem; border-radius: 14px;
+  font-weight: 700; z-index: 60; max-width: calc(100% - 2rem); text-align: center;
+  opacity: 0; visibility: hidden; transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+#toast.show { transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; }
+
+#print-view { display: none; }
+
+/* ==========================================================================
+   Tablet dhe celular
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .topnav { display: none; }
+  .brand-tag { display: none; }
+  .tabbar {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+    padding: .35rem .35rem calc(.35rem + var(--safe-b));
+    background: rgba(255,255,255,.97); backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line); box-shadow: 0 -4px 18px rgba(15,42,44,.06);
+  }
+  .tabbar a {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem;
+    min-height: 3.6rem; border-radius: 14px; text-decoration: none; color: var(--muted);
+    font-size: .74rem; font-weight: 700; line-height: 1.1; text-align: center;
+  }
+  .tabbar a .icon { width: 1.5rem; height: 1.5rem; }
+  .tabbar a.active { color: var(--primary-deep); background: var(--primary-soft); }
+  main { padding-bottom: calc(var(--tabbar-h) + var(--safe-b) + 2rem); }
+  #toast { bottom: calc(var(--tabbar-h) + var(--safe-b) + 1rem); }
+  .composer { bottom: calc(var(--tabbar-h) + var(--safe-b) + .6rem); }
+  .home-grid { grid-template-columns: minmax(0, 1fr); }
+  .home-side { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; align-items: start; }
+  .home-side .card { margin-bottom: 0; }
+}
+
+@media (max-width: 720px) {
+  :root { --topbar-h: 3.75rem; }
+  h1 { font-size: 1.7rem; }
+  .topbar-inner { padding: 0 1rem; gap: .5rem; }
+  .textsize-wide { display: none; }
+  .textsize-cycle { display: grid; }
+  .brand-mark { width: 2.2rem; height: 2.2rem; }
+  .brand-name { font-size: 1.2rem; }
+  .btn-sos { padding: 0 .85rem; }
+  main { padding: 1rem 1rem calc(var(--tabbar-h) + var(--safe-b) + 1.5rem); }
+  .card { padding: 1.15rem; border-radius: 16px; }
+  .hero { padding: 1.5rem 1.3rem 1.4rem; border-radius: 20px; margin-bottom: 1.25rem; }
+  .hero h1 { font-size: 1.85rem; }
+  .hero-sub { font-size: 1rem; margin-bottom: 1.1rem; }
+  .hero-actions .btn { flex: 1 1 100%; }
+  .home-side { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .home-side .card { margin-bottom: 1.25rem; }
+  .patient-label, .patient-top, .patient dl { padding-left: 1.15rem; padding-right: 1.15rem; }
+  .patient-empty { padding: 0 1.15rem 1.15rem; }
+  .page-head { margin: .25rem 0 1.25rem; gap: .8rem; }
+  .page-icon { width: 2.75rem; height: 2.75rem; border-radius: 14px; }
+  .page-icon .icon { width: 1.35rem; height: 1.35rem; }
+  .lead { font-size: 1rem; }
+  .section-title { margin-top: 1.75rem; }
+  .grid-2 { grid-template-columns: minmax(0, 1fr); }
+  .actions .btn { flex: 1 1 40%; min-height: 2.9rem; padding: .5rem .8rem; font-size: .92rem; white-space: normal; }
+  .form-actions .btn { flex: 1 1 auto; }
+  .photo-cta { padding: 1rem; }
+  .photo-cta-icon { width: 3rem; height: 3rem; }
+  .photo-pick { grid-template-columns: minmax(0, 1fr); }
+  .photo-camera { flex-direction: row; min-height: 3.75rem; }
+  .severity { grid-template-columns: repeat(5, 1fr); }
+  .textsize-big button { min-height: 4rem; font-size: .9rem; }
+  .msg { max-width: 94%; }
+  .composer .btn span { display: none; }
+  .composer .btn { padding: 0; width: 3rem; border-radius: 50%; }
+  .therapy-icon { display: none; }
+  .therapy-actions .btn { flex: 1 1 auto; }
+  .lab-value { font-size: 1.85rem; }
+  .lab-card { padding: 1.15rem 1.15rem 1rem 1.35rem; }
+  .stats { grid-template-columns: minmax(0, 1fr); }
+  .report-item summary { padding: 1rem; }
+  .report-body { padding: .5rem 1rem 1.1rem; }
+  .r-value .range { margin-left: 0; flex-basis: 100%; }
+}
+
+@media (max-width: 400px) {
+  .brand-text { display: none; }
+  .badge { font-size: .82rem; padding: .2rem .6rem; }
+}
+
+/* ==========================================================================
+   Printimi për mjekun
+   ========================================================================== */
+@media print {
+  body { background: #fff; font-size: 12pt; }
+  .topbar, main, .tabbar, #toast, .tooltip, .skip { display: none !important; }
+  #print-view { display: block; color: #000; }
+  #print-view h1 { font-size: 20pt; margin-bottom: 4pt; }
+  #print-view h2 { font-size: 14pt; margin: 16pt 0 6pt; border-bottom: 1px solid #999; padding-bottom: 3pt; }
+  #print-view table { width: 100%; border-collapse: collapse; }
+  #print-view th, #print-view td { text-align: left; padding: 4pt 6pt; border-bottom: 1px solid #ccc; font-size: 11pt; }
+  #print-view .flag { font-weight: 700; }
+  #print-view h3 { font-size: 13pt; margin: 12pt 0 4pt; }
+  #print-view p, #print-view li { font-size: 11.5pt; line-height: 1.45; }
+}
+
+/* Në ekrane të gjera, rezultatet e analizave dalin në dy kolona */
+@media (min-width: 900px) {
+  #lab-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; align-items: start; }
+  #lab-list > .card { margin: 0; }
+  #lab-list > .card-quiet { grid-column: 1 / -1; }
+}

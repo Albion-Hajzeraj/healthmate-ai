@@ -1,0 +1,21 @@
+# Ambienti virtual i Python-it
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Çelësat e AI-së (mos e ngarko kurrë!)
+.env
+
+# Të dhënat personale shëndetësore: baza dhe fotot e fletëve të analizave
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Skedarë të redaktorit / sistemit
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
